@@ -1,0 +1,39 @@
+<configuration>
+
+    <!-- Define properties for logging -->
+    <property name="LOGS" value="./logs" />
+    <property name="HOST" value="${NODE_IP}" />
+    <property name="LOG_PATTERN_COLOUR" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%blue(%t)] %highlight(%-5level) %yellow(%logger{0}) %magenta(%M): %msg%n%throwable" />
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] %logger{0} %M: %msg%n%throwable" />
+
+    <!-- Console appender with colorized logs -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${LOG_PATTERN_COLOUR}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File appender -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/application-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger -->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
+    <!-- Logger for your project (optional, adjust as needed) -->
+    <logger name="com.example" level="debug" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+
+</configuration>
