@@ -7,13 +7,24 @@ spring:
     username: root
     password: Vai@1234
     driver-class-name: com.mysql.cj.jdbc.Driver
+  security:
+    user:
+     name: vaibhav
+     password: vaibhav
+    roles: ADMIN
 
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: update # Options: create, update, create-drop, validate
+      ddl-auto: update  # Options: create, update, create-drop, validate
 
 Upload:
-  FilePath: "C:\\CODE\\UploadFolder"
+  FilePath: "C:/CODE/UploadFolder"
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
