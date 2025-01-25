@@ -8,10 +8,10 @@ spring:
     password: Vai@1234
     driver-class-name: com.mysql.cj.jdbc.Driver
   security:
-    user:
-     name: vaibhav
-     password: vaibhav
-    roles: ADMIN
+#    user:
+#     name: vaibhav
+#     password: vaibhav
+#    roles: ADMIN
 
   jpa:
     properties:
@@ -23,8 +23,8 @@ spring:
 Upload:
   FilePath: "C:/CODE/UploadFolder"
 
-logging:
-  level:
-    org.springframework.security: DEBUG
+#logging:
+#  level:
+#    org.springframework.security: DEBUG
 
 
